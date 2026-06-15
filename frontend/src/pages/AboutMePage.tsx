@@ -63,44 +63,6 @@ export default function AboutMePage() {
             <div className={styles.skyGlow} />
 
             <div className={styles.page}>
-                <section className={styles.hero}>
-                    <div className={styles.introPanel}>
-                        <p className={styles.kicker}>PLAYER PROFILE</p>
-                        <h1>Chia-Tai, Lee</h1>
-                        <p className={styles.subtitle}>
-                            研究生 | 喜歡學習知識，動手實作！
-                        </p>
-
-                        <div className={styles.socialLinks}>
-                            <a href="https://github.com/CT-12" target="_blank" rel="noreferrer">
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-
-                    <aside className={styles.profilePanel}>
-                        <div className={styles.namePlate}>
-                            <h2>Adventurer Card</h2>
-                            <p>
-                                Master Student
-                                <br />
-                                National Taiwan University
-                            </p>
-                        </div>
-
-                        <div className={styles.statGrid}>
-                            <div className={styles.statBox}>
-                                <span>Research</span>
-                                <strong>LLM / XBRL / 財報分析</strong>
-                            </div>
-                            <div className={styles.statBox}>
-                                <span>Build Style</span>
-                                <strong>學習知識，動手實作</strong>
-                            </div>
-                        </div>
-                    </aside>
-                </section>
-
                 <section className={styles.sectionPanel}>
                     <div className={styles.sectionHeader}>
                         <span className={styles.sectionLabel}>ACADEMY LOG</span>
