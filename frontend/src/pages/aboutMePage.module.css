@@ -1,0 +1,348 @@
+.var {
+    --bg-dark: #151019;
+    --gold: #f5c76b;
+    --gold-dark: #a66a2c;
+    --paper: #f0d6a2;
+    --ink: #332116;
+    --brown: #5a351e;
+    --green: #537f5a;
+    --green-dark: #283f31;
+    --cream: #fff2c7;
+    --red: #a9443d;
+
+    min-height: 100dvh;
+    position: relative;
+    overflow-x: hidden;
+    color: var(--cream);
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        radial-gradient(circle at 50% 10%, rgba(245, 199, 107, 0.2), transparent 30%),
+        linear-gradient(180deg, #251a35 0%, #16101d 48%, #100c12 100%);
+    background-size:
+        8px 8px,
+        8px 8px,
+        auto,
+        auto;
+    font-family:
+        "Courier New",
+        "Noto Sans TC",
+        monospace;
+}
+
+.skyGlow {
+    position: absolute;
+    top: 64px;
+    left: 50%;
+    width: min(900px, 90vw);
+    height: 420px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(255, 203, 105, 0.2), transparent 68%);
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+.page {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 52px 0 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    gap: 28px;
+    align-items: stretch;
+    margin-bottom: 34px;
+}
+
+.introPanel,
+.profilePanel,
+.sectionPanel {
+    position: relative;
+    border: 4px solid #000;
+    box-shadow:
+        0 0 0 4px var(--gold-dark),
+        12px 12px 0 rgba(0, 0, 0, 0.45);
+}
+
+.introPanel {
+    padding: 34px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 28%),
+        #2a1b26;
+}
+
+.introPanel::before,
+.profilePanel::before,
+.sectionPanel::before,
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 2px solid rgba(255, 242, 199, 0.22);
+    pointer-events: none;
+}
+
+.kicker,
+.sectionLabel {
+    display: inline-block;
+    color: #1d140c;
+    background: var(--gold);
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0 #000;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.kicker {
+    margin: 0 0 18px;
+    padding: 8px 12px;
+}
+
+.introPanel h1 {
+    margin: 0;
+    font-size: clamp(2.25rem, 6vw, 5rem);
+    line-height: 0.98;
+    color: var(--cream);
+    text-shadow:
+        4px 4px 0 #000,
+        8px 8px 0 rgba(166, 106, 44, 0.6);
+}
+
+.subtitle {
+    width: min(680px, 100%);
+    margin: 22px 0 0;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.9;
+    color: #f7deb0;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.socialLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.socialLinks a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    color: #1d140c;
+    background: var(--gold);
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0 #000;
+    font-weight: 900;
+    text-decoration: none;
+    transition:
+        transform 120ms ease,
+        box-shadow 120ms ease;
+}
+
+.socialLinks a:nth-child(2) {
+    color: var(--cream);
+    background: var(--green);
+}
+
+.socialLinks a:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 #000;
+}
+
+.profilePanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 22px;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 50%, transparent 50%),
+        linear-gradient(180deg, #423055, #1d1629);
+    background-size: 12px 12px, auto;
+}
+
+.namePlate {
+    padding: 16px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0 #000;
+}
+
+.namePlate h2 {
+    margin: 0 0 8px;
+    font-size: 1.45rem;
+    font-weight: 900;
+}
+
+.namePlate p {
+    margin: 0;
+    line-height: 1.65;
+    font-weight: 700;
+}
+
+.statGrid {
+    display: grid;
+    gap: 10px;
+}
+
+.statBox {
+    padding: 12px;
+    background: #17101c;
+    border: 3px solid #000;
+}
+
+.statBox span {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 900;
+}
+
+.statBox strong {
+    display: block;
+    line-height: 1.55;
+    font-size: 0.95rem;
+}
+
+.sectionPanel {
+    margin-top: 32px;
+    padding: 24px;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.12) 50%, transparent 50%),
+        linear-gradient(180deg, #734827, #4b2c18);
+    background-size: 18px 18px, auto;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.sectionLabel {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+}
+
+.sectionHeader h2 {
+    margin: 0;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    text-align: right;
+    text-shadow:
+        3px 3px 0 #000,
+        6px 6px 0 rgba(166, 106, 44, 0.65);
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.card {
+    position: relative;
+    min-height: 150px;
+    padding: 20px;
+    color: var(--ink);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 35%),
+        var(--paper);
+    border: 4px solid #000;
+    box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.55);
+}
+
+.card h3 {
+    margin: 0 0 12px;
+    font-size: 1.18rem;
+    line-height: 1.5;
+    font-weight: 900;
+}
+
+.card p,
+.card li {
+    line-height: 1.8;
+    font-weight: 700;
+}
+
+.card strong {
+    color: var(--green-dark);
+    font-weight: 900;
+}
+
+.card p + p {
+    margin-top: 4px;
+}
+
+.card ul {
+    display: grid;
+    gap: 8px;
+    padding-left: 20px;
+    margin: 12px 0 0;
+    list-style: square;
+}
+
+.wideCard {
+    grid-column: 1 / -1;
+}
+
+.skillList {
+    display: grid;
+    gap: 10px;
+}
+
+.emptyQuest {
+    min-height: auto;
+}
+
+.emptyQuest p {
+    color: rgba(51, 33, 22, 0.78);
+}
+
+@media (max-width: 900px) {
+    .hero,
+    .cardGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .profilePanel {
+        max-width: 520px;
+    }
+
+    .wideCard {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .page {
+        padding-top: 32px;
+    }
+
+    .introPanel,
+    .sectionPanel {
+        padding: 20px;
+    }
+
+    .sectionHeader {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .sectionHeader h2 {
+        text-align: left;
+    }
+
+    .socialLinks {
+        flex-direction: column;
+    }
+}
