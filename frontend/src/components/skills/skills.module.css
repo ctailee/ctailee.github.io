@@ -1,0 +1,275 @@
+.skillWindow {
+  --skill-grid-gap-y: 7px;
+  --skill-grid-gap-x: 10px;
+  --skill-grid-padding: 10px;
+  --skill-item-height: 90px;
+
+  width: min(760px, calc(100vw - 32px));
+  margin: 0 auto;
+  background: #f4f4f4;
+  border: 3px solid rgba(18, 21, 24, 0.82);
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.86),
+    inset 0 0 0 4px rgba(73, 78, 84, 0.42),
+    4px 4px 0 rgba(0, 0, 0, 0.34);
+  font-family: "Arial", "Microsoft JhengHei", sans-serif;
+  overflow: hidden;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.windowHeader {
+  height: 34px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.24),
+      rgba(255, 255, 255, 0.06) 34%,
+      rgba(0, 0, 0, 0.28)
+    ),
+    linear-gradient(#5d6870, #252c33);
+  border-bottom: 2px solid rgba(20, 24, 28, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerTitle {
+  color: #f7fbff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow:
+    1px 1px 0 #000,
+    0 0 6px rgba(94, 202, 255, 0.42);
+}
+
+.tabControls {
+  height: 46px;
+  background: linear-gradient(#fbfbfb, #d6d6d6);
+  border-bottom: 2px solid #a3a3a3;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 0 7px 5px;
+}
+
+.tabArrow {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #8b8b8b;
+  border-radius: 6px;
+  background: linear-gradient(#ffffff, #c6c6c6);
+  color: #5f666b;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 1px 1px 0 #ffffff;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+    inset -1px -1px 0 rgba(120, 120, 120, 0.55);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.tabArrow:active {
+  transform: translateY(1px);
+}
+
+.tabViewport {
+  height: 40px;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+}
+
+.tabBar {
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 6px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.tabBar::-webkit-scrollbar {
+  display: none;
+}
+
+.tabButton {
+  height: 34px;
+  min-width: 156px;
+  border: 2px solid #8f8f8f;
+  border-bottom: none;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(#f8f8f8, #cfcfcf);
+  color: #5f666b;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.75);
+  flex: 0 0 auto;
+  transition:
+    background 0.12s,
+    color 0.12s,
+    transform 0.12s;
+}
+
+.activeTab {
+  background: #f49b25;
+  border-color: #c7731b;
+  color: #fff;
+  text-shadow: 1px 1px 0 #7a3f09;
+  transform: translateY(1px) scale(1.05);
+  transform-origin: bottom center;
+}
+
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: start;
+  gap: var(--skill-grid-gap-y) var(--skill-grid-gap-x);
+  padding: var(--skill-grid-padding);
+  flex: none;
+  box-sizing: border-box;
+  height: calc(
+    (var(--skill-item-height) * 3) + (var(--skill-grid-gap-y) * 2) +
+      (var(--skill-grid-padding) * 2)
+  );
+  overflow-y: auto;
+  background:
+    linear-gradient(#ffffff 0 0) padding-box,
+    linear-gradient(#bcbcbc, #9e9e9e) border-box;
+  border-top: 1px solid #ffffff;
+}
+
+.skillItem {
+  box-sizing: border-box;
+  height: var(--skill-item-height);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.28) 0,
+      rgba(255, 255, 255, 0.28) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    linear-gradient(#f7f7f7, #dddddd);
+  border: 1px solid #b4b4b4;
+  border-radius: 4px;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #a8a8a8;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  position: relative;
+}
+
+.skillIcon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.skillIcon img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.skillName {
+  font-size: 17px;
+  font-weight: 700;
+  color: #596067;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (width <= 820px) {
+  .skillWindow {
+    --skill-item-height: 82px;
+    width: min(100%, calc(100vw - 24px));
+  }
+
+  .tabButton {
+    min-width: 136px;
+    font-size: 14px;
+  }
+
+  .skillIcon,
+  .skillIcon img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .skillName {
+    font-size: 15px;
+  }
+}
+
+@media (width <= 520px) {
+  .skillWindow {
+    --skill-grid-gap-y: 6px;
+    --skill-grid-padding: 8px;
+    --skill-item-height: 76px;
+    width: calc(100vw - 16px);
+  }
+
+  .windowHeader {
+    height: 30px;
+  }
+
+  .headerTitle {
+    font-size: 12px;
+  }
+
+  .tabControls {
+    height: 42px;
+    gap: 4px;
+    padding: 0 5px 5px;
+  }
+
+  .tabArrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tabViewport,
+  .tabBar {
+    height: 36px;
+  }
+
+  .tabButton {
+    height: 30px;
+    min-width: 120px;
+    font-size: 13px;
+  }
+
+  .skillGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .skillIcon,
+  .skillIcon img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .skillName {
+    font-size: 14px;
+  }
+}

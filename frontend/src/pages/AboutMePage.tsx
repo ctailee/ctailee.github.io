@@ -1,3 +1,4 @@
+import Skills from "../components/skills";
 import styles from "./aboutMePage.module.css";
 
 type Education = {
@@ -63,6 +64,9 @@ export default function AboutMePage() {
             <div className={styles.skyGlow} />
 
             <div className={styles.page}>
+
+                <Skills />
+
                 <section className={styles.sectionPanel}>
                     <div className={styles.sectionHeader}>
                         <span className={styles.sectionLabel}>ACADEMY LOG</span>
@@ -113,17 +117,6 @@ export default function AboutMePage() {
                                 </li>
                             ))}
                         </ul>
-                    </article>
-                </section>
-
-                <section className={styles.sectionPanel}>
-                    <div className={styles.sectionHeader}>
-                        <span className={styles.sectionLabel}>PROJECT BOARD</span>
-                    </div>
-
-                    <article className={`${styles.card} ${styles.emptyQuest}`}>
-                        <h3>Coming Soon</h3>
-                        <p>作品與專案資訊預留於此區塊</p>
                     </article>
                 </section>
             </div>
