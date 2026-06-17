@@ -1,77 +1,43 @@
 .skillWindow {
-  --skill-grid-gap-y: 7px;
-  --skill-grid-gap-x: 10px;
-  --skill-grid-padding: 10px;
-  --skill-item-height: 90px;
+  --skill-grid-gap-y: 9px;
+  --skill-grid-gap-x: 9px;
+  --skill-grid-padding: 0;
+  --skill-item-height: 92px;
 
-  width: min(760px, calc(100vw - 32px));
-  margin: 0 auto;
-  background: #f4f4f4;
-  border: 3px solid rgba(18, 21, 24, 0.82);
-  border-radius: 12px;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.86),
-    inset 0 0 0 4px rgba(73, 78, 84, 0.42),
-    4px 4px 0 rgba(0, 0, 0, 0.34);
-  font-family: "Arial", "Microsoft JhengHei", sans-serif;
-  overflow: hidden;
-  color: #333;
+  width: 100%;
+  min-height: 100%;
+  color: #261508;
   display: flex;
   flex-direction: column;
-}
-
-.windowHeader {
-  height: 34px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.24),
-      rgba(255, 255, 255, 0.06) 34%,
-      rgba(0, 0, 0, 0.28)
-    ),
-    linear-gradient(#5d6870, #252c33);
-  border-bottom: 2px solid rgba(20, 24, 28, 0.82);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.headerTitle {
-  color: #f7fbff;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow:
-    1px 1px 0 #000,
-    0 0 6px rgba(94, 202, 255, 0.42);
+  font-family: "Trebuchet MS", "Microsoft JhengHei", Arial, sans-serif;
 }
 
 .tabControls {
-  height: 46px;
-  background: linear-gradient(#fbfbfb, #d6d6d6);
-  border-bottom: 2px solid #a3a3a3;
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  padding: 0 7px 5px;
+  min-height: 54px;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) 30px;
+  align-items: start;
+  gap: 7px;
+  margin: -4px 0 18px;
 }
 
 .tabArrow {
-  width: 30px;
-  height: 30px;
-  border: 2px solid #8b8b8b;
-  border-radius: 6px;
-  background: linear-gradient(#ffffff, #c6c6c6);
-  color: #5f666b;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1;
-  text-shadow: 1px 1px 0 #ffffff;
+  width: 32px;
+  height: 32px;
+  color: #241409;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.34), transparent 24%),
+    linear-gradient(#f2c45d, #9b6428);
+  border: 3px solid #211107;
+  border-radius: 50%;
   box-shadow:
-    inset 1px 1px 0 rgba(255, 255, 255, 0.9),
-    inset -1px -1px 0 rgba(120, 120, 120, 0.55);
+    inset 0 0 0 2px rgba(255, 246, 207, 0.22),
+    3px 3px 0 rgba(59, 33, 16, 0.24);
   cursor: pointer;
   flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .tabArrow:active {
@@ -79,20 +45,19 @@
 }
 
 .tabViewport {
-  height: 40px;
-  overflow: hidden;
-  flex: 1;
   min-width: 0;
+  height: 52px;
+  overflow: hidden;
 }
 
 .tabBar {
-  height: 40px;
+  height: 52px;
   display: flex;
-  align-items: flex-end;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 6px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0 6px;
+  padding: 0 3px;
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
@@ -102,174 +67,173 @@
 }
 
 .tabButton {
-  height: 34px;
-  min-width: 156px;
-  border: 2px solid #8f8f8f;
-  border-bottom: none;
-  border-radius: 7px 7px 0 0;
-  background: linear-gradient(#f8f8f8, #cfcfcf);
-  color: #5f666b;
-  font-size: 16px;
-  font-weight: 700;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.85);
+  min-width: 136px;
+  height: 46px;
+  color: #4e3018;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 46%),
+    linear-gradient(#f4d48a, #b87334);
+  border: 3px solid #211107;
+  border-radius: 0 0 12px 12px;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 246, 207, 0.24),
+    3px 5px 0 rgba(59, 33, 16, 0.2);
   cursor: pointer;
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.75);
   flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 900;
+  text-shadow: 1px 1px 0 rgba(255, 246, 207, 0.66);
   transition:
-    background 0.12s,
     color 0.12s,
+    background 0.12s,
     transform 0.12s;
 }
 
 .activeTab {
-  background: #f49b25;
-  border-color: #c7731b;
-  color: #fff;
-  text-shadow: 1px 1px 0 #7a3f09;
-  transform: translateY(1px) scale(1.05);
-  transform-origin: bottom center;
+  color: #fff0bc;
+  background:
+    radial-gradient(circle at 50% 0, rgba(85, 199, 189, 0.45), transparent 42%),
+    linear-gradient(#6d273d, #35151f);
+  text-shadow: 2px 2px 0 #120907;
+  transform: translateY(4px);
 }
 
 .skillGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-content: start;
   gap: var(--skill-grid-gap-y) var(--skill-grid-gap-x);
   padding: var(--skill-grid-padding);
-  flex: none;
   box-sizing: border-box;
-  height: calc(
-    (var(--skill-item-height) * 3) + (var(--skill-grid-gap-y) * 2) +
-      (var(--skill-grid-padding) * 2)
-  );
+  flex: 1;
+  min-height: 580px;
   overflow-y: auto;
   background:
-    linear-gradient(#ffffff 0 0) padding-box,
-    linear-gradient(#bcbcbc, #9e9e9e) border-box;
-  border-top: 1px solid #ffffff;
+    linear-gradient(90deg, rgba(92, 54, 24, 0.1) 0 1px, transparent 1px 18px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 38%);
+  border: 0;
+  box-shadow: none;
 }
 
 .skillItem {
   box-sizing: border-box;
   height: var(--skill-item-height);
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.28) 0,
-      rgba(255, 255, 255, 0.28) 1px,
-      transparent 1px,
-      transparent 4px
-    ),
-    linear-gradient(#f7f7f7, #dddddd);
-  border: 1px solid #b4b4b4;
-  border-radius: 4px;
-  box-shadow:
-    inset 1px 1px 0 #ffffff,
-    inset -1px -1px 0 #a8a8a8;
+  position: relative;
   display: flex;
   align-items: center;
   padding: 8px;
-  position: relative;
+  color: #281607;
+  background:
+    linear-gradient(90deg, rgba(85, 199, 189, 0.13), transparent 34%),
+    linear-gradient(#ffe7a6, #d4a157);
+  border: 3px solid #4e2d15;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 248, 221, 0.36),
+    3px 3px 0 rgba(59, 33, 16, 0.2);
+}
+
+.skillItem::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  bottom: 7px;
+  width: 4px;
+  background: linear-gradient(#55c7bd, #6d273d);
+  border: 1px solid #211107;
 }
 
 .skillIcon {
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 12px;
+  margin: 0 12px 0 8px;
   flex-shrink: 0;
+  background:
+    radial-gradient(circle, rgba(85, 199, 189, 0.2), transparent 62%),
+    #241822;
+  border: 3px solid #211107;
+  box-shadow: inset 0 0 0 2px rgba(242, 196, 93, 0.16);
 }
 
 .skillIcon img {
-  width: 58px;
-  height: 58px;
+  width: 42px;
+  height: 42px;
   object-fit: contain;
   image-rendering: pixelated;
 }
 
 .skillName {
-  font-size: 17px;
-  font-weight: 700;
-  color: #596067;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.9);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #2b190d;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-shadow: 1px 1px 0 rgba(255, 246, 207, 0.72);
 }
 
 @media (width <= 820px) {
   .skillWindow {
-    --skill-item-height: 82px;
-    width: min(100%, calc(100vw - 24px));
+    --skill-item-height: 78px;
   }
 
   .tabButton {
-    min-width: 136px;
-    font-size: 14px;
+    min-width: 124px;
+    font-size: 13px;
   }
 
-  .skillIcon,
+  .skillIcon {
+    width: 50px;
+    height: 50px;
+  }
+
   .skillIcon img {
-    width: 52px;
-    height: 52px;
+    width: 39px;
+    height: 39px;
   }
 
   .skillName {
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
 @media (width <= 520px) {
   .skillWindow {
-    --skill-grid-gap-y: 6px;
+    --skill-grid-gap-y: 7px;
     --skill-grid-padding: 8px;
-    --skill-item-height: 76px;
-    width: calc(100vw - 16px);
-  }
-
-  .windowHeader {
-    height: 30px;
-  }
-
-  .headerTitle {
-    font-size: 12px;
+    --skill-item-height: 74px;
   }
 
   .tabControls {
-    height: 42px;
-    gap: 4px;
-    padding: 0 5px 5px;
+    grid-template-columns: 30px minmax(0, 1fr) 30px;
+    gap: 5px;
   }
 
   .tabArrow {
-    width: 28px;
-    height: 28px;
-  }
-
-  .tabViewport,
-  .tabBar {
-    height: 36px;
+    width: 30px;
+    height: 30px;
   }
 
   .tabButton {
-    height: 30px;
-    min-width: 120px;
-    font-size: 13px;
+    min-width: 110px;
+    height: 34px;
+    font-size: 12px;
   }
 
   .skillGrid {
     grid-template-columns: 1fr;
+    min-height: 460px;
   }
 
-  .skillIcon,
+  .skillIcon {
+    width: 46px;
+    height: 46px;
+  }
+
   .skillIcon img {
-    width: 48px;
-    height: 48px;
-  }
-
-  .skillName {
-    font-size: 14px;
+    width: 36px;
+    height: 36px;
   }
 }
