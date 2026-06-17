@@ -200,10 +200,6 @@ export default function Skills() {
 
   return (
     <div className={styles.skillWindow}>
-      <div className={styles.windowHeader}>
-        <span className={styles.headerTitle}>SKILLS</span>
-      </div>
-
       <div className={styles.tabControls}>
         <button
           aria-label="Scroll tabs left"
