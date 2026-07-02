@@ -5,14 +5,42 @@
     --text: #111827;
     --muted: #5f6b7a;
     --blue: #0078d4;
+    --activity-bg: #fbfbfb;
+    --explorer-bg: #f8f8f8;
+    --shell-bg: #ffffff;
+    --tabbar-bg: #f3f3f3;
+    --tab-bg: #ffffff;
+    --hover-bg: #e8e8e8;
+    --settings-bg: #ffffff;
+    --settings-sidebar-bg: #f8f8f8;
+    --card-bg: #ffffff;
+    --tag-bg: #f3f4f6;
+    --secondary-text: #374151;
 
     display: grid;
     grid-template-columns: var(--activity-width) minmax(0, 1fr);
     height: 100dvh;
     overflow: hidden;
     color: var(--text);
-    background: #ffffff;
+    background: var(--shell-bg);
     font-family: "Segoe UI", "Microsoft JhengHei", Arial, sans-serif;
+}
+
+.vscode[data-theme="dark"] {
+    --line: #2b3138;
+    --text: #d4d4d4;
+    --muted: #9aa4af;
+    --activity-bg: #181818;
+    --explorer-bg: #1f1f1f;
+    --shell-bg: #1e1e1e;
+    --tabbar-bg: #181818;
+    --tab-bg: #1e1e1e;
+    --hover-bg: #2a2d2e;
+    --settings-bg: #1e1e1e;
+    --settings-sidebar-bg: #181818;
+    --card-bg: #252526;
+    --tag-bg: #2d2d30;
+    --secondary-text: #c8c8c8;
 }
 
 .explorerOpen {
@@ -23,12 +51,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
     padding-top: 15px;
+    padding-bottom: 14px;
     min-height: 0;
     overflow: hidden;
-    background: #fbfbfb;
+    background: var(--activity-bg);
     border-right: 1px solid var(--line);
+}
+
+.primaryActivities {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
 .activityButton {
@@ -38,15 +72,118 @@
     width: var(--activity-width);
     height: 43px;
     padding: 0;
-    color: #526172;
+    color: var(--muted);
     background: transparent;
     border: 0;
     cursor: pointer;
 }
 
+.settingsButton {
+    margin-top: auto;
+}
+
+.settingsIcon {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.settingsOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.settingsWindow {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    width: min(1536px, calc(100vw - 206px));
+    height: min(786px, calc(100dvh - 136px));
+    overflow: hidden;
+    color: var(--text);
+    background: var(--settings-bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+.settingsSidebar {
+    padding: 26px 18px;
+    background: var(--settings-sidebar-bg);
+    border-right: 1px solid var(--line);
+}
+
+.settingsSidebar button {
+    width: 100%;
+    height: 34px;
+    padding: 0 12px;
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.settingsSidebar .activeSettingSection {
+    background: var(--hover-bg);
+}
+
+.settingsContent {
+    padding: 32px 42px;
+}
+
+.settingsContent h2 {
+    margin: 0 0 22px;
+    color: var(--text);
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.optionButtons {
+    display: flex;
+    gap: 12px;
+}
+
+.optionButtons button {
+    min-width: 96px;
+    height: 36px;
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    background: var(--shell-bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.optionButtons button:hover,
+.optionButtons .activeOption {
+    color: #ffffff;
+    background: var(--blue);
+    border-color: var(--blue);
+}
+
+@media (max-width: 980px) {
+    .settingsWindow {
+        grid-template-columns: 170px minmax(0, 1fr);
+        width: calc(100vw - 34px);
+        height: calc(100dvh - 44px);
+    }
+}
+
 .activityButton:hover,
 .activityButton.active {
-    color: #1f2937;
+    color: var(--text);
 }
 
 .activityButton.active::before {
@@ -105,14 +242,17 @@
     min-width: 0;
     min-height: 0;
     overflow: hidden;
-    background: #f8f8f8;
+    background: var(--explorer-bg);
     border-right: 1px solid var(--line);
 }
 
 .explorerTitle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     height: 44px;
-    padding: 15px 25px 0;
-    color: #4b5563;
+    padding: 0 25px;
+    color: var(--muted);
     font-size: 14px;
     line-height: 1;
 }
@@ -122,17 +262,17 @@
     align-items: center;
     height: 35px;
     padding: 0 15px;
-    color: #222222;
+    color: var(--text);
     font-size: 14px;
     font-weight: 700;
-    border-top: 1px solid #eceff3;
-    border-bottom: 1px solid #eceff3;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 }
 
 .folderTitle::before {
     content: "▾";
     margin-right: 5px;
-    color: #4b5563;
+    color: var(--muted);
     font-size: 13px;
 }
 
@@ -149,7 +289,7 @@
     height: 30px;
     padding: 0 15px 0 28px;
     overflow: hidden;
-    color: #333333;
+    color: var(--text);
     font-size: 16px;
     text-decoration: none;
     text-overflow: ellipsis;
@@ -157,7 +297,7 @@
 }
 
 .fileLinks a:hover {
-    background: #e8e8e8;
+    background: var(--hover-bg);
 }
 
 .linkArrow {
@@ -165,7 +305,7 @@
     flex: 0 0 auto;
     width: 16px;
     height: 18px;
-    color: #6b7280;
+    color: var(--muted);
 }
 
 .linkArrow::before,
@@ -195,7 +335,7 @@
     grid-template-rows: 45px minmax(0, 1fr);
     min-width: 0;
     min-height: 0;
-    background: #ffffff;
+    background: var(--shell-bg);
 }
 
 .tabBar {
@@ -203,7 +343,7 @@
     display: flex;
     align-items: stretch;
     min-width: 0;
-    background: #f3f3f3;
+    background: var(--tabbar-bg);
     border-bottom: 1px solid var(--line);
 }
 
@@ -214,9 +354,9 @@
     width: 150px;
     height: 45px;
     padding: 0 13px;
-    color: #111827;
+    color: var(--text);
     font-size: 16px;
-    background: #ffffff;
+    background: var(--tab-bg);
     border-top: 1px solid #ff6b35;
     border-right: 1px solid var(--line);
 }
@@ -266,7 +406,7 @@
     justify-content: center;
     flex: 0 0 auto;
     margin-left: auto;
-    color: #111827;
+    color: var(--text);
     width: 18px;
     height: 18px;
     font-family: "Segoe UI", Arial, sans-serif;
@@ -280,7 +420,7 @@
     min-width: 0;
     min-height: 0;
     overflow: auto;
-    background: #ffffff;
+    background: var(--shell-bg);
 }
 
 @media (max-width: 640px) {
