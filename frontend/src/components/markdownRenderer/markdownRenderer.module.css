@@ -1,0 +1,125 @@
+.markdown {
+    width: min(880px, calc(100% - 64px));
+    margin: 48px auto 72px;
+    color: var(--text);
+    font-family: "Segoe UI", "Microsoft JhengHei", Arial, sans-serif;
+}
+
+.metadata {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+}
+
+.metadata time {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.tags span {
+    padding: 3px 8px;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.4;
+    background: var(--tag-bg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+    color: var(--text);
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.markdown h1 {
+    margin: 0 0 22px;
+    font-size: 34px;
+}
+
+.markdown h2 {
+    margin: 32px 0 16px;
+    font-size: 26px;
+}
+
+.markdown h3 {
+    margin: 24px 0 12px;
+    font-size: 20px;
+}
+
+.markdown p,
+.markdown li,
+.markdown blockquote {
+    color: var(--secondary-text);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.markdown p {
+    margin: 0 0 16px;
+}
+
+.markdown ul {
+    display: grid;
+    gap: 6px;
+    margin: 0 0 18px;
+    padding-left: 24px;
+    list-style: disc;
+}
+
+.markdown blockquote {
+    margin: 0 0 18px;
+    padding: 10px 16px;
+    border-left: 3px solid var(--blue);
+    background: var(--tag-bg);
+}
+
+.markdown pre {
+    margin: 0 0 18px;
+    padding: 16px;
+    overflow-x: auto;
+    color: var(--text);
+    background: var(--tag-bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+}
+
+.markdown code {
+    font-family: Consolas, "Courier New", monospace;
+}
+
+.markdown p code,
+.markdown li code {
+    padding: 2px 5px;
+    background: var(--tag-bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+}
+
+.markdown a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.markdown a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .markdown {
+        width: calc(100% - 34px);
+        margin-top: 34px;
+    }
+}

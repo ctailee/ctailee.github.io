@@ -42,7 +42,7 @@ export default function VscodeWorkbench({
         });
     };
 
-    const activeTabTitle = selectedContentFile?.name ?? tabTitle;
+    const activeTabTitle = selectedContentFile ? `${selectedContentFile.displayName}.md` : tabTitle;
 
     return (
         <main className={`${styles.vscode} ${isExplorerOpen ? styles.explorerOpen : ""}`} data-theme={themeMode}>
@@ -82,7 +82,11 @@ export default function VscodeWorkbench({
                 </header>
 
                 <section className={styles.editor} aria-label={`${activeTabTitle} editor area`}>
-                    {selectedContentFile ? <MarkdownRenderer markdown={selectedContentFile.markdown} /> : children}
+                    {selectedContentFile ? (
+                        <MarkdownRenderer markdown={selectedContentFile.markdown} metadata={selectedContentFile.metadata} />
+                    ) : (
+                        children
+                    )}
                 </section>
             </section>
         </main>
