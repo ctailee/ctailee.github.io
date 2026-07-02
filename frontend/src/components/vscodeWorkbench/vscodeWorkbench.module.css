@@ -1,0 +1,299 @@
+.vscode {
+    --activity-width: 58px;
+    --explorer-width: 325px;
+    --line: #d5dce3;
+    --text: #111827;
+    --muted: #5f6b7a;
+    --blue: #0078d4;
+
+    display: grid;
+    grid-template-columns: var(--activity-width) minmax(0, 1fr);
+    height: 100dvh;
+    overflow: hidden;
+    color: var(--text);
+    background: #ffffff;
+    font-family: "Segoe UI", "Microsoft JhengHei", Arial, sans-serif;
+}
+
+.explorerOpen {
+    grid-template-columns: var(--activity-width) var(--explorer-width) minmax(0, 1fr);
+}
+
+.activityBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding-top: 15px;
+    min-height: 0;
+    overflow: hidden;
+    background: #fbfbfb;
+    border-right: 1px solid var(--line);
+}
+
+.activityButton {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: var(--activity-width);
+    height: 43px;
+    padding: 0;
+    color: #526172;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.activityButton:hover,
+.activityButton.active {
+    color: #1f2937;
+}
+
+.activityButton.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--blue);
+}
+
+.fileIcon {
+    position: relative;
+    width: 20px;
+    height: 25px;
+    border: 2px solid currentColor;
+    border-radius: 2px;
+}
+
+.fileIcon::before {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    width: 9px;
+    height: 9px;
+    background: #fbfbfb;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: skew(-10deg);
+}
+
+.searchIcon {
+    position: relative;
+    width: 21px;
+    height: 21px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+}
+
+.searchIcon::after {
+    content: "";
+    position: absolute;
+    right: -9px;
+    bottom: -6px;
+    width: 11px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 999px;
+    transform: rotate(45deg);
+    transform-origin: left center;
+}
+
+.explorer {
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    background: #f8f8f8;
+    border-right: 1px solid var(--line);
+}
+
+.explorerTitle {
+    height: 44px;
+    padding: 15px 25px 0;
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.folderTitle {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    padding: 0 15px;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 700;
+    border-top: 1px solid #eceff3;
+    border-bottom: 1px solid #eceff3;
+}
+
+.folderTitle::before {
+    content: "▾";
+    margin-right: 5px;
+    color: #4b5563;
+    font-size: 13px;
+}
+
+.fileLinks {
+    display: grid;
+    padding-top: 5px;
+}
+
+.fileLinks a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    height: 30px;
+    padding: 0 15px 0 28px;
+    overflow: hidden;
+    color: #333333;
+    font-size: 16px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fileLinks a:hover {
+    background: #e8e8e8;
+}
+
+.linkArrow {
+    position: relative;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 18px;
+    color: #6b7280;
+}
+
+.linkArrow::before,
+.linkArrow::after {
+    content: "";
+    position: absolute;
+    right: 3px;
+    width: 11px;
+    height: 1.6px;
+    background: currentColor;
+    border-radius: 999px;
+    transform-origin: right center;
+}
+
+.linkArrow::before {
+    top: 8px;
+    transform: rotate(45deg);
+}
+
+.linkArrow::after {
+    bottom: 8px;
+    transform: rotate(-45deg);
+}
+
+.shell {
+    display: grid;
+    grid-template-rows: 45px minmax(0, 1fr);
+    min-width: 0;
+    min-height: 0;
+    background: #ffffff;
+}
+
+.tabBar {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+    background: #f3f3f3;
+    border-bottom: 1px solid var(--line);
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 150px;
+    height: 45px;
+    padding: 0 13px;
+    color: #111827;
+    font-size: 16px;
+    background: #ffffff;
+    border-top: 1px solid #ff6b35;
+    border-right: 1px solid var(--line);
+}
+
+.wideTab {
+    width: 188px;
+}
+
+.smallLogo {
+    position: relative;
+    flex: 0 0 auto;
+    width: 19px;
+    height: 19px;
+}
+
+.smallLogo::before,
+.smallLogo::after {
+    content: "";
+    position: absolute;
+    background: #007acc;
+}
+
+.smallLogo::before {
+    inset: 3px 5px 3px 5px;
+    transform: rotate(45deg);
+}
+
+.smallLogo::after {
+    right: 0;
+    top: 1px;
+    width: 8px;
+    height: 17px;
+    border-radius: 1px;
+}
+
+.tabTitle {
+    min-width: 0;
+    overflow: hidden;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.closeMark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    margin-left: auto;
+    color: #111827;
+    width: 18px;
+    height: 18px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 18px;
+    transform: translateY(-1px);
+}
+
+.editor {
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    background: #ffffff;
+}
+
+@media (max-width: 640px) {
+    .vscode {
+        --activity-width: 52px;
+        --explorer-width: minmax(238px, 72vw);
+    }
+
+    .tab {
+        width: 135px;
+    }
+
+    .wideTab {
+        width: 170px;
+    }
+}

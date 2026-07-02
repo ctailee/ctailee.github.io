@@ -1,9 +1,5 @@
-import Guild from '../components/guild';
+import VscodeWorkbench from "../components/vscodeWorkbench";
 
 export default function HomePage() {
-    return (
-        <div>
-            <Guild />
-        </div>
-    )
+    return <VscodeWorkbench ariaLabel="VS Code welcome page" tabTitle="歡迎" />;
 }
