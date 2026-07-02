@@ -196,46 +196,10 @@
     background: var(--blue);
 }
 
-.fileIcon {
-    position: relative;
-    width: 20px;
-    height: 25px;
-    border: 2px solid currentColor;
-    border-radius: 2px;
-}
-
-.fileIcon::before {
-    content: "";
-    position: absolute;
-    right: -2px;
-    top: -2px;
-    width: 9px;
-    height: 9px;
-    background: #fbfbfb;
-    border-left: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: skew(-10deg);
-}
-
-.searchIcon {
-    position: relative;
-    width: 21px;
-    height: 21px;
-    border: 2px solid currentColor;
-    border-radius: 50%;
-}
-
-.searchIcon::after {
-    content: "";
-    position: absolute;
-    right: -9px;
-    bottom: -6px;
-    width: 11px;
-    height: 2px;
-    background: currentColor;
-    border-radius: 999px;
-    transform: rotate(45deg);
-    transform-origin: left center;
+.activityIcon {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
 }
 
 .explorer {
@@ -287,10 +251,10 @@
     gap: 9px;
     min-width: 0;
     height: 30px;
-    padding: 0 15px 0 28px;
+    padding: 0 15px;
     overflow: hidden;
     color: var(--text);
-    font-size: 16px;
+    font-size: 15px;
     text-decoration: none;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -300,11 +264,123 @@
     background: var(--hover-bg);
 }
 
+.contentsExplorer {
+    margin-top: 8px;
+    border-top: 1px solid var(--line);
+}
+
+.contentsToggle,
+.contentFolder,
+.contentFile {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    width: 100%;
+    height: 30px;
+    padding: 0 15px;
+    overflow: hidden;
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.contentsToggle {
+    gap: 9px;
+    font-size: 15px;
+}
+
+.contentFolder {
+    gap: 7px;
+}
+
+.contentFile {
+    gap: 8px;
+    padding-left: 22px;
+}
+
+.contentsToggle:hover,
+.contentFolder:hover,
+.contentFile:hover,
+.activeContentFile {
+    background: var(--hover-bg);
+}
+
+.contentsTree {
+    display: grid;
+    padding: 4px 0 8px;
+}
+
+.contentChildren {
+    display: grid;
+    padding-left: 16px;
+}
+
+.contentArrow {
+    position: relative;
+    flex: 0 0 auto;
+    width: 13px;
+    height: 15px;
+    color: var(--muted);
+}
+
+.contentArrow::before,
+.contentArrow::after {
+    content: "";
+    position: absolute;
+    right: 2px;
+    width: 9px;
+    height: 1.4px;
+    background: currentColor;
+    border-radius: 999px;
+    transform-origin: right center;
+}
+
+.contentArrow::before {
+    top: 7px;
+    transform: rotate(45deg);
+}
+
+.contentArrow::after {
+    bottom: 7px;
+    transform: rotate(-45deg);
+}
+
+.openContentArrow {
+    transform: rotate(90deg);
+}
+
+.contentIcon {
+    flex: 0 0 auto;
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+}
+
+.contentFile span,
+.contentFolder span:last-child,
+.contentsToggle span:last-child {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.emptyContents {
+    padding: 7px 15px 4px 38px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
 .linkArrow {
     position: relative;
     flex: 0 0 auto;
-    width: 16px;
-    height: 18px;
+    width: 13px;
+    height: 15px;
     color: var(--muted);
 }
 
@@ -312,21 +388,21 @@
 .linkArrow::after {
     content: "";
     position: absolute;
-    right: 3px;
-    width: 11px;
-    height: 1.6px;
+    right: 2px;
+    width: 9px;
+    height: 1.4px;
     background: currentColor;
     border-radius: 999px;
     transform-origin: right center;
 }
 
 .linkArrow::before {
-    top: 8px;
+    top: 7px;
     transform: rotate(45deg);
 }
 
 .linkArrow::after {
-    bottom: 8px;
+    bottom: 7px;
     transform: rotate(-45deg);
 }
 
@@ -365,31 +441,11 @@
     width: 188px;
 }
 
-.smallLogo {
-    position: relative;
+.tabIcon {
     flex: 0 0 auto;
-    width: 19px;
-    height: 19px;
-}
-
-.smallLogo::before,
-.smallLogo::after {
-    content: "";
-    position: absolute;
-    background: #007acc;
-}
-
-.smallLogo::before {
-    inset: 3px 5px 3px 5px;
-    transform: rotate(45deg);
-}
-
-.smallLogo::after {
-    right: 0;
-    top: 1px;
-    width: 8px;
-    height: 17px;
-    border-radius: 1px;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
 .tabTitle {
