@@ -88,6 +88,12 @@ export default function AboutMePage() {
     return (
         <VscodeWorkbench ariaLabel="VS Code about page" tabTitle="about_me.ts" tabWidth="wide">
             <div className={styles.contentPanel}>
+                <div className={styles.profileActions}>
+                    <a className={styles.githubButton} href="https://github.com/CT-12" target="_blank" rel="noreferrer">
+                        GitHub
+                    </a>
+                </div>
+
                 <section className={styles.section}>
                     <div className={styles.sectionHeader}>
                         <span>01</span>
