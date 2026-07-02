@@ -25,6 +25,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background: #fff7df;
+	color: #2f2517;
+	font-family: "Trebuchet MS", "Microsoft JhengHei", Arial, sans-serif;
 }
 ol, ul {
 	list-style: none;

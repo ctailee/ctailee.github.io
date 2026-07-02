@@ -1,298 +1,128 @@
-.realm {
-    --bg-dark: #151019;
-    --bg-mid: #24182f;
-    --burgundy: #6d273d;
-    --parchment: #f2d894;
-    --parchment-light: #fff0bc;
-    --parchment-deep: #c1843e;
-    --ink: #2b190d;
-    --gold: #f5c76b;
-    --gold-dark: #a66a2c;
-    --rune: #55c7bd;
-    --cream: #fff2c7;
-
-    min-height: 100dvh;
-    position: relative;
-    overflow-x: hidden;
-    color: var(--cream);
-    background:
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        radial-gradient(circle at 50% 12%, rgba(245, 199, 107, 0.22), transparent 30%),
-        linear-gradient(180deg, #251a35 0%, #16101d 48%, #100c12 100%);
-    background-size:
-        8px 8px,
-        8px 8px,
-        auto,
-        auto;
-    font-family: "Courier New", "Noto Sans TC", monospace;
+.contentPanel {
+    width: min(960px, calc(100% - 64px));
+    margin: 58px auto 72px;
 }
 
-.realm::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.06),
-            transparent 10%,
-            transparent 90%,
-            rgba(0, 0, 0, 0.4));
-    mix-blend-mode: soft-light;
-    z-index: 5;
+.section + .section {
+    margin-top: 52px;
 }
 
-.skyGlow {
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    width: min(900px, 90vw);
-    height: 420px;
-    transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(255, 203, 105, 0.2), transparent 68%);
-    filter: blur(4px);
-    pointer-events: none;
-}
-
-.guildDesk {
-    position: relative;
-    z-index: 1;
-    width: min(1540px, calc(100% - 28px));
-    margin: 0 auto;
-    padding: 42px 0 82px;
-}
-
-.openTome {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    min-height: 760px;
-    padding: 28px;
-    background:
-        linear-gradient(90deg, transparent 0 calc(50% - 18px), rgba(0, 0, 0, 0.5) calc(50% - 18px) calc(50% + 18px), transparent calc(50% + 18px)),
-        linear-gradient(180deg, #8a5830, #3a2115);
-    border: 7px solid #100907;
-    border-radius: 12px;
-    box-shadow:
-        inset 0 0 0 5px rgba(242, 196, 93, 0.18),
-        22px 22px 0 rgba(0, 0, 0, 0.42);
-}
-
-.openTome::before,
-.openTome::after {
-    content: "";
-    position: absolute;
-    top: 22px;
-    bottom: 22px;
-    width: 26px;
-    background:
-        repeating-linear-gradient(0deg, #f2c45d 0 13px, #7a4a25 13px 24px);
-    border: 4px solid #100907;
-    box-shadow: inset 0 0 0 2px rgba(255, 245, 203, 0.22);
-}
-
-.openTome::before {
-    left: -17px;
-    border-radius: 10px 0 0 10px;
-}
-
-.openTome::after {
-    right: -17px;
-    border-radius: 0 10px 10px 0;
-}
-
-.bookStrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 3;
-    width: 46px;
-    height: calc(100% - 46px);
-    transform: translate(-50%, -50%);
-    background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 44% 56%, rgba(0, 0, 0, 0.24)),
-        linear-gradient(#5b3420, #1c0f0a);
-    border: 5px solid #100907;
-    box-shadow:
-        inset 0 0 0 2px rgba(242, 196, 93, 0.22),
-        0 0 22px rgba(0, 0, 0, 0.34);
-}
-
-.bookPage {
-    position: relative;
-    min-width: 0;
-    padding: 28px;
-    color: var(--ink);
-    background:
-        radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.46), transparent 18%),
-        linear-gradient(90deg, rgba(106, 65, 27, 0.12) 0 1px, transparent 1px 22px),
-        linear-gradient(180deg, var(--parchment-light), var(--parchment) 58%, #d5a75d);
-    border: 5px solid #100907;
-    box-shadow:
-        inset 0 0 0 3px rgba(255, 249, 218, 0.45),
-        inset 0 -18px 0 rgba(95, 58, 24, 0.1);
-}
-
-.skillPage {
+.sectionHeader {
     display: flex;
-    flex-direction: column;
-    border-radius: 8px 0 0 8px;
-    padding-right: 42px;
-}
-
-.questPage {
-    border-radius: 0 8px 8px 0;
-    padding-left: 42px;
-}
-
-.pageHeader {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 4px double rgba(76, 42, 20, 0.5);
-}
-
-.pageHeader h2 {
-    margin: 0;
-    color: #805228;
-    font-size: 0.92rem;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    text-align: left;
-    text-shadow: 1px 1px 0 rgba(255, 249, 218, 0.8);
-    text-transform: uppercase;
-}
-
-.questLedger {
-    display: grid;
+    align-items: baseline;
     gap: 14px;
-    max-height: 630px;
-    padding-right: 8px;
-    overflow-y: auto;
-    scrollbar-color: #8b5728 rgba(91, 52, 25, 0.18);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb;
 }
 
-.questEntry {
-    position: relative;
-    padding: 12px;
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 38%),
-        linear-gradient(#f6e0a3, #d5a85d);
-    border: 4px solid #251408;
-    box-shadow:
-        inset 0 0 0 2px rgba(255, 249, 218, 0.34),
-        5px 5px 0 rgba(59, 33, 16, 0.24);
+.sectionHeader span {
+    color: var(--blue);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 15px;
 }
 
-.questEntry::before {
-    content: "";
-    position: absolute;
-    inset: 8px;
-    border: 1px dashed rgba(76, 42, 20, 0.36);
-    pointer-events: none;
+.sectionHeader h1 {
+    margin: 0;
+    color: #111827;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.25;
 }
 
-.workQuest {
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 38%),
-        linear-gradient(#efd08e, #bd774e);
+.skillGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
 }
 
-.questCopy {
-    position: relative;
-    z-index: 1;
+.skillGroup,
+.experienceCard {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
 }
 
-.questMeta {
+.skillGroup {
+    padding: 18px;
+}
+
+.skillGroup h2,
+.experienceMeta h2 {
+    margin: 0;
+    color: #111827;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.tags {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 6px 12px;
-    margin-bottom: 7px;
-    color: #74491f;
-    font-size: 0.76rem;
-    font-weight: 900;
+    gap: 8px;
+    margin-top: 12px;
 }
 
-.questMeta time {
-    color: #5b3419;
+.tags span {
+    padding: 5px 9px;
+    color: #1f2937;
+    font-size: 14px;
+    line-height: 1.3;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
 }
 
-.questCopy h3 {
-    margin: 0 0 8px;
-    color: #241409;
-    font-size: 1rem;
-    font-weight: 900;
+.timeline {
+    display: grid;
+    gap: 14px;
+}
+
+.experienceCard {
+    display: grid;
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    gap: 24px;
+    padding: 20px;
+}
+
+.experienceMeta time {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--blue);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+}
+
+.experienceMeta p {
+    margin: 6px 0 0;
+    color: #374151;
+    font-size: 16px;
     line-height: 1.45;
 }
 
-.questCopy ul {
+.experienceCard ul {
     display: grid;
-    gap: 6px;
+    gap: 8px;
     margin: 0;
     padding-left: 18px;
-    color: #3c2716;
-    list-style: square;
+    color: #374151;
 }
 
-.questCopy li {
-    font-size: 0.9rem;
-    font-weight: 700;
+.experienceCard li {
+    font-size: 15px;
     line-height: 1.65;
 }
 
-@media (max-width: 900px) {
-    .openTome {
+@media (max-width: 860px) {
+    .skillGrid,
+    .experienceCard {
         grid-template-columns: 1fr;
-        gap: 18px;
-        background: linear-gradient(180deg, #8a5830, #3a2115);
-    }
-
-    .bookStrap,
-    .openTome::before,
-    .openTome::after {
-        display: none;
-    }
-
-    .skillPage,
-    .questPage {
-        padding: 18px;
-        border-radius: 8px;
-    }
-
-    .questLedger {
-        max-height: none;
-        overflow: visible;
     }
 }
 
 @media (max-width: 640px) {
-    .guildDesk {
-        width: min(100% - 18px, 1540px);
-        padding: 24px 0 54px;
+    .contentPanel {
+        width: calc(100% - 34px);
+        margin-top: 34px;
     }
-
-    .openTome {
-        border-width: 4px;
-        box-shadow:
-            inset 0 0 0 2px rgba(255, 248, 211, 0.24),
-            7px 7px 0 rgba(0, 0, 0, 0.32);
-    }
-
-    .openTome {
-        padding: 12px;
-    }
-
-    .pageHeader {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .pageHeader h2 {
-        text-align: left;
-    }
-
 }
