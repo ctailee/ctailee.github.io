@@ -1,0 +1,68 @@
+name: Build and deploy github page
+
+on:
+    push:
+        branches:
+            - main
+
+    # workflow_dispatch 可以手動觸發 workflow
+    # 避免 workflow 失敗還要硬塞一個 commit 去重新觸發
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+# 當有多個 workflow 同時觸發時，concurrency 用來管理這些並行的 workflows
+# 讓同一個 group 的 workflow 只能有一個在跑，避免同時部署到 GitHub Pages
+concurrency:
+    group: github-pages # 設定 group 名稱
+    cancel-in-progress: true # 取消正在跑的 workflow，改跑最新的 workflow
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        defaults:
+            run: # 這個 job 裡所有 run: 指令，預設都在 ./frontend 執行。
+                working-directory: ./frontend
+
+        # 這是在告訴 GitHub：
+        # 這個 job 會部署到一個叫做 github-pages 的 environment。這個 env 是 repo 層級的，會一直存在。
+        # url 這行則是把部署完成後的 Pages 網址顯示在 GitHub Actions UI 上。
+        environment:
+            name: github-pages-env
+            url: ${{ steps.deployment.outputs.page_url }}
+
+        steps:
+            # 把 GitHub repo 下載到 GitHub Actions 的 runner
+            - name: Checkout repository
+              uses: actions/checkout@v6
+
+            # 在 GitHub Actions runner 上安裝指定版本的 Node.js
+            - name: Setup Node.js
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 26
+                  cache: npm # 快取 npm 下載過的套件資料，讓之後 workflow 跑得比較快。不然每次 workflow 都從零開始下載 dependencies
+                  cache-dependency-path: ./frontend/package-lock.json
+
+            - name: Install dependencies
+              run: npm ci # 根據 package-lock.json 安裝套件，CICD 常用這個而不是 npm install
+
+            - name: Build docs
+              run: npm run build
+
+            # 初始化 GitHub Pages 部署需要的設定
+            - name: Setup GitHub Pages
+              uses: actions/configure-pages@v5
+
+            - name: Upload GitHub Pages artifact
+              uses: actions/upload-pages-artifact@v4
+              with:
+                  path: ./frontend/docs
+
+            - name: Deploy to GitHub Pages
+              id: deployment # 用在前面 environment 取得 page_url
+              uses: actions/deploy-pages@v4
