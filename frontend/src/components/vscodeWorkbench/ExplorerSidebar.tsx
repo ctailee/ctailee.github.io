@@ -45,8 +45,8 @@ export default function ExplorerSidebar({
                 </button>
                 {isContentsOpen && (
                     <div className={styles.contentsTree}>
-                        {contentTree.length > 0 ? (
-                            contentTree.map((node) => (
+                        {contentTree.children.length > 0 ? (
+                            contentTree.children.map((node) => (
                                 <ContentTreeItem
                                     key={node.path}
                                     node={node}

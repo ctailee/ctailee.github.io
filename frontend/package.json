@@ -10,12 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.3.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router": "^7.17.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
