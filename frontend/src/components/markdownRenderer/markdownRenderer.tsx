@@ -1,5 +1,7 @@
+import "highlight.js/styles/github.min.css";
 import MarkdownIt from "markdown-it";
 import type { ContentMetadata } from "../vscodeWorkbench/types";
+import { highlightMarkdownCode } from "./codeHighlighter";
 import styles from "./markdownRenderer.module.css";
 
 type MarkdownRendererProps = {
@@ -9,6 +11,7 @@ type MarkdownRendererProps = {
 
 const markdownParser = new MarkdownIt({
     html: false,
+    highlight: highlightMarkdownCode,
     linkify: true,
     typographer: true,
 });

@@ -79,6 +79,23 @@
     list-style: disc;
 }
 
+.markdown ol {
+    display: grid;
+    gap: 6px;
+    margin: 0 0 18px;
+    padding-left: 24px;
+    list-style: decimal;
+}
+
+.markdown strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.markdown em {
+    font-style: italic;
+}
+
 .markdown blockquote {
     margin: 0 0 18px;
     padding: 10px 16px;
@@ -100,8 +117,15 @@
     font-family: Consolas, "Courier New", monospace;
 }
 
+.markdown pre code {
+    display: block;
+    color: inherit;
+    background: transparent;
+}
+
 .markdown p code,
-.markdown li code {
+.markdown li code,
+.markdown blockquote code {
     padding: 2px 5px;
     background: var(--tag-bg);
     border: 1px solid var(--line);
