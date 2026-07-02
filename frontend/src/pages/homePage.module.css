@@ -1,0 +1,11 @@
+.welcomeMessage {
+    display: grid;
+    place-items: center;
+    min-height: 100%;
+    color: var(--muted);
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    opacity: 0.42;
+}
