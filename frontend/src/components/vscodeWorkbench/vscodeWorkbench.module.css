@@ -264,14 +264,14 @@
     background: var(--hover-bg);
 }
 
-.contentsExplorer {
+.articlesExplorer {
     margin-top: 8px;
     border-top: 1px solid var(--line);
 }
 
-.contentsToggle,
-.contentFolder,
-.contentFile {
+.articlesToggle,
+.articleFolder,
+.articleFile {
     display: flex;
     align-items: center;
     min-width: 0;
@@ -288,39 +288,39 @@
     cursor: pointer;
 }
 
-.contentsToggle {
+.articlesToggle {
     gap: 9px;
     font-size: 15px;
 }
 
-.contentFolder {
+.articleFolder {
     gap: 7px;
 }
 
-.contentFile {
+.articleFile {
     gap: 8px;
     padding-left: 22px;
 }
 
-.contentsToggle:hover,
-.contentFolder:hover,
-.contentFile:hover,
-.activeContentFile {
+.articlesToggle:hover,
+.articleFolder:hover,
+.articleFile:hover,
+.activeArticleFile {
     background: var(--hover-bg);
 }
 
-.contentsTree {
+.articlesTree {
     display: grid;
     padding: 4px 0 8px;
     padding-left: 16px;
 }
 
-.contentChildren {
+.articleChildren {
     display: grid;
     padding-left: 16px;
 }
 
-.contentArrow {
+.articleArrow {
     position: relative;
     flex: 0 0 auto;
     width: 13px;
@@ -328,8 +328,8 @@
     color: var(--muted);
 }
 
-.contentArrow::before,
-.contentArrow::after {
+.articleArrow::before,
+.articleArrow::after {
     content: "";
     position: absolute;
     right: 2px;
@@ -340,37 +340,37 @@
     transform-origin: right center;
 }
 
-.contentArrow::before {
+.articleArrow::before {
     top: 7px;
     transform: rotate(45deg);
 }
 
-.contentArrow::after {
+.articleArrow::after {
     bottom: 7px;
     transform: rotate(-45deg);
 }
 
-.openContentArrow {
+.openArticleArrow {
     transform: rotate(90deg);
 }
 
-.contentIcon {
+.articleIcon {
     flex: 0 0 auto;
     width: 17px;
     height: 17px;
     object-fit: contain;
 }
 
-.contentFile span,
-.contentFolder span:last-child,
-.contentsToggle span:last-child {
+.articleFile span,
+.articleFolder span:last-child,
+.articlesToggle span:last-child {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.emptyContents {
+.emptyArticles {
     padding: 7px 15px 4px 38px;
     color: var(--muted);
     font-size: 13px;

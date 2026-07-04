@@ -1,12 +1,12 @@
 import "highlight.js/styles/github.min.css";
 import MarkdownIt from "markdown-it";
-import type { ContentMetadata } from "../vscodeWorkbench/types";
+import type { ArticleMetadata } from "../vscodeWorkbench/types";
 import { highlightMarkdownCode } from "./codeHighlighter";
 import styles from "./markdownRenderer.module.css";
 
 type MarkdownRendererProps = {
     markdown: string;
-    metadata?: ContentMetadata;
+    metadata?: ArticleMetadata;
 };
 
 const markdownParser = new MarkdownIt({

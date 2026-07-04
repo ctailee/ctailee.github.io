@@ -1,6 +1,6 @@
-import type { ContentFile, ContentMetadata, ContentTreeNode } from "./types";
+import type { ArticleFile, ArticleMetadata, ArticleTreeNode } from "./types";
 
-const contentModules = import.meta.glob("../../assets/contents/**/*.md", {
+const articleModules = import.meta.glob("../../assets/articles/**/*.md", {
     eager: true,
     import: "default",
     query: "?raw",
@@ -16,7 +16,7 @@ const parseFrontmatter = (markdown: string) => {
         };
     }
 
-    const metadata: ContentMetadata = {};
+    const metadata: ArticleMetadata = {};
 
     match[1].split("\n").forEach((line) => {
         const separatorIndex = line.indexOf(":");
@@ -52,9 +52,9 @@ const parseFrontmatter = (markdown: string) => {
     };
 };
 
-export const contentFiles: ContentFile[] = Object.entries(contentModules)
+export const articleFiles: ArticleFile[] = Object.entries(articleModules)
     .map(([path, markdown]) => {
-        const relativePath = path.split("/assets/contents/")[1];
+        const relativePath = path.split("/assets/articles/")[1];
         const { body, metadata } = parseFrontmatter(markdown);
         const heading = body.match(/^#\s+(.+)$/m)?.[1].trim();
         const filename = relativePath.split("/").at(-1) ?? relativePath;
@@ -70,7 +70,7 @@ export const contentFiles: ContentFile[] = Object.entries(contentModules)
     })
     .sort((a, b) => a.path.localeCompare(b.path));
 
-const getOrCreateFolder = (children: ContentTreeNode[], name: string, path: string) => {
+const getOrCreateFolder = (children: ArticleTreeNode[], name: string, path: string) => {
     let folder = children.find((child) => child.type === "folder" && child.path === path);
 
     if (!folder) {
@@ -86,7 +86,7 @@ const getOrCreateFolder = (children: ContentTreeNode[], name: string, path: stri
     return folder;
 };
 
-const sortTree = (node: ContentTreeNode) => {
+const sortTree = (node: ArticleTreeNode) => {
     node.children.sort((a, b) => {
         if (a.type !== b.type) {
             return a.type === "folder" ? -1 : 1;
@@ -97,11 +97,11 @@ const sortTree = (node: ContentTreeNode) => {
     node.children.forEach(sortTree);
 };
 
-export const buildContentTree = (files: ContentFile[]) => {
-    const root: ContentTreeNode = {
+export const buildArticleTree = (files: ArticleFile[]) => {
+    const root: ArticleTreeNode = {
         children: [],
-        name: "contents",
-        path: "contents",
+        name: "articles",
+        path: "articles",
         type: "folder",
     };
 
@@ -133,4 +133,4 @@ export const buildContentTree = (files: ContentFile[]) => {
     return root;
 };
 
-export const contentTree = buildContentTree(contentFiles);
+export const articleTree = buildArticleTree(articleFiles);

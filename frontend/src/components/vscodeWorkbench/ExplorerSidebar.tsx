@@ -1,16 +1,17 @@
 import { Link } from "react-router";
-import ContentTreeItem from "./ContentTreeItem";
-import { contentTree } from "./contentTree";
-import type { ContentFile } from "./types";
+import ArticleTreeItem from "./ArticleTreeItem";
+import { articleTree } from "./articleTree";
+import type { ArticleFile } from "./types";
 import styles from "./vscodeWorkbench.module.css";
 
 type ExplorerSidebarProps = {
-    isContentsOpen: boolean;
-    onSelectContentFile: (file: ContentFile) => void;
-    onToggleContents: () => void;
-    openContentFolders: Set<string>;
-    selectedContentPath?: string;
-    toggleContentFolder: (path: string) => void;
+    isArticlesOpen: boolean;
+    onSelectNavigationLink: () => void;
+    onSelectArticleFile: (file: ArticleFile) => void;
+    onToggleArticles: () => void;
+    openArticleFolders: Set<string>;
+    selectedArticlePath?: string;
+    toggleArticleFolder: (path: string) => void;
 };
 
 const navLinks = [
@@ -19,12 +20,13 @@ const navLinks = [
 ];
 
 export default function ExplorerSidebar({
-    isContentsOpen,
-    onSelectContentFile,
-    onToggleContents,
-    openContentFolders,
-    selectedContentPath,
-    toggleContentFolder,
+    isArticlesOpen,
+    onSelectNavigationLink,
+    onSelectArticleFile,
+    onToggleArticles,
+    openArticleFolders,
+    selectedArticlePath,
+    toggleArticleFolder,
 }: ExplorerSidebarProps) {
     return (
         <aside className={styles.explorer} aria-label="Explorer">
@@ -32,32 +34,32 @@ export default function ExplorerSidebar({
             <div className={styles.folderTitle}>CT</div>
             <nav className={styles.fileLinks}>
                 {navLinks.map((link) => (
-                    <Link to={link.to} key={link.to}>
+                    <Link to={link.to} key={link.to} onClick={onSelectNavigationLink}>
                         <span className={styles.linkArrow} aria-hidden="true" />
                         {link.label}
                     </Link>
                 ))}
             </nav>
-            <div className={styles.contentsExplorer}>
-                <button className={styles.contentsToggle} type="button" aria-expanded={isContentsOpen} onClick={onToggleContents}>
-                    <span className={`${styles.contentArrow} ${isContentsOpen ? styles.openContentArrow : ""}`} aria-hidden="true" />
-                    <span>Contents</span>
+            <div className={styles.articlesExplorer}>
+                <button className={styles.articlesToggle} type="button" aria-expanded={isArticlesOpen} onClick={onToggleArticles}>
+                    <span className={`${styles.articleArrow} ${isArticlesOpen ? styles.openArticleArrow : ""}`} aria-hidden="true" />
+                    <span>Articles</span>
                 </button>
-                {isContentsOpen && (
-                    <div className={styles.contentsTree}>
-                        {contentTree.children.length > 0 ? (
-                            contentTree.children.map((node) => (
-                                <ContentTreeItem
+                {isArticlesOpen && (
+                    <div className={styles.articlesTree}>
+                        {articleTree.children.length > 0 ? (
+                            articleTree.children.map((node) => (
+                                <ArticleTreeItem
                                     key={node.path}
                                     node={node}
-                                    onSelectFile={onSelectContentFile}
-                                    openFolders={openContentFolders}
-                                    selectedPath={selectedContentPath}
-                                    toggleFolder={toggleContentFolder}
+                                    onSelectFile={onSelectArticleFile}
+                                    openFolders={openArticleFolders}
+                                    selectedPath={selectedArticlePath}
+                                    toggleFolder={toggleArticleFolder}
                                 />
                             ))
                         ) : (
-                            <p className={styles.emptyContents}>No markdown files</p>
+                            <p className={styles.emptyArticles}>No articles</p>
                         )}
                     </div>
                 )}
