@@ -1,6 +1,6 @@
 import type { ArticleFile, ArticleMetadata, ArticleTreeNode } from "./types";
 
-const articleModules = import.meta.glob("../../assets/articles/**/*.md", {
+const articleModules = import.meta.glob("../../../../articles/**/*.md", {
     eager: true,
     import: "default",
     query: "?raw",
@@ -54,7 +54,7 @@ const parseFrontmatter = (markdown: string) => {
 
 export const articleFiles: ArticleFile[] = Object.entries(articleModules)
     .map(([path, markdown]) => {
-        const relativePath = path.split("/assets/articles/")[1];
+        const relativePath = path.split("/articles/")[1];
         const { body, metadata } = parseFrontmatter(markdown);
         const heading = body.match(/^#\s+(.+)$/m)?.[1].trim();
         const filename = relativePath.split("/").at(-1) ?? relativePath;
