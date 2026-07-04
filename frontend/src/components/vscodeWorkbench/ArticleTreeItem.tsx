@@ -1,30 +1,30 @@
 import documentIcon from "../../assets/images/document.svg";
-import type { ContentFile, ContentTreeNode } from "./types";
+import type { ArticleFile, ArticleTreeNode } from "./types";
 import styles from "./vscodeWorkbench.module.css";
 
-type ContentTreeItemProps = {
-    node: ContentTreeNode;
-    onSelectFile: (file: ContentFile) => void;
+type ArticleTreeItemProps = {
+    node: ArticleTreeNode;
+    onSelectFile: (file: ArticleFile) => void;
     openFolders: Set<string>;
     selectedPath?: string;
     toggleFolder: (path: string) => void;
 };
 
-export default function ContentTreeItem({
+export default function ArticleTreeItem({
     node,
     onSelectFile,
     openFolders,
     selectedPath,
     toggleFolder,
-}: ContentTreeItemProps) {
+}: ArticleTreeItemProps) {
     if (node.type === "file" && node.file) {
         return (
             <button
-                className={`${styles.contentFile} ${selectedPath === node.file.path ? styles.activeContentFile : ""}`}
+                className={`${styles.articleFile} ${selectedPath === node.file.path ? styles.activeArticleFile : ""}`}
                 type="button"
                 onClick={() => onSelectFile(node.file!)}
             >
-                <img className={styles.contentIcon} src={documentIcon} alt="" aria-hidden="true" />
+                <img className={styles.articleIcon} src={documentIcon} alt="" aria-hidden="true" />
                 <span>{node.name}</span>
             </button>
         );
@@ -34,14 +34,14 @@ export default function ContentTreeItem({
 
     return (
         <div>
-            <button className={styles.contentFolder} type="button" onClick={() => toggleFolder(node.path)}>
-                <span className={`${styles.contentArrow} ${isOpen ? styles.openContentArrow : ""}`} aria-hidden="true" />
+            <button className={styles.articleFolder} type="button" onClick={() => toggleFolder(node.path)}>
+                <span className={`${styles.articleArrow} ${isOpen ? styles.openArticleArrow : ""}`} aria-hidden="true" />
                 <span>{node.name}</span>
             </button>
             {isOpen && (
-                <div className={styles.contentChildren}>
+                <div className={styles.articleChildren}>
                     {node.children.map((child) => (
-                        <ContentTreeItem
+                        <ArticleTreeItem
                             key={child.path}
                             node={child}
                             onSelectFile={onSelectFile}

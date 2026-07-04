@@ -1,21 +1,21 @@
-export type ContentFile = {
+export type ArticleFile = {
     displayName: string;
     markdown: string;
-    metadata: ContentMetadata;
+    metadata: ArticleMetadata;
     name: string;
     path: string;
 };
 
-export type ContentMetadata = {
+export type ArticleMetadata = {
     created_at?: string;
     tags?: string[];
     title?: string;
     updated_at?: string;
 };
 
-export type ContentTreeNode = {
-    children: ContentTreeNode[];
-    file?: ContentFile;
+export type ArticleTreeNode = {
+    children: ArticleTreeNode[];
+    file?: ArticleFile;
     name: string;
     path: string;
     type: "folder" | "file";

@@ -4,7 +4,7 @@ import MarkdownRenderer from "../markdownRenderer";
 import ActivityBar from "./ActivityBar";
 import ExplorerSidebar from "./ExplorerSidebar";
 import SettingsDialog from "./SettingsDialog";
-import type { ContentFile } from "./types";
+import type { ArticleFile } from "./types";
 import { useThemeMode } from "./useThemeMode";
 import styles from "./vscodeWorkbench.module.css";
 
@@ -22,14 +22,14 @@ export default function VscodeWorkbench({
     tabWidth = "default",
 }: VscodeWorkbenchProps) {
     const [isExplorerOpen, setIsExplorerOpen] = useState(true);
-    const [isContentsOpen, setIsContentsOpen] = useState(false);
+    const [isArticlesOpen, setIsArticlesOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-    const [openContentFolders, setOpenContentFolders] = useState<Set<string>>(() => new Set(["contents"]));
-    const [selectedContentFile, setSelectedContentFile] = useState<ContentFile>();
+    const [openArticleFolders, setOpenArticleFolders] = useState<Set<string>>(() => new Set(["articles"]));
+    const [selectedArticleFile, setSelectedArticleFile] = useState<ArticleFile>();
     const [themeMode, setThemeMode] = useThemeMode();
 
-    const toggleContentFolder = (path: string) => {
-        setOpenContentFolders((currentFolders) => {
+    const toggleArticleFolder = (path: string) => {
+        setOpenArticleFolders((currentFolders) => {
             const nextFolders = new Set(currentFolders);
 
             if (nextFolders.has(path)) {
@@ -42,7 +42,7 @@ export default function VscodeWorkbench({
         });
     };
 
-    const activeTabTitle = selectedContentFile ? `${selectedContentFile.displayName}.md` : tabTitle;
+    const activeTabTitle = selectedArticleFile ? `${selectedArticleFile.displayName}.md` : tabTitle;
 
     return (
         <main className={`${styles.vscode} ${isExplorerOpen ? styles.explorerOpen : ""}`} data-theme={themeMode}>
@@ -63,12 +63,13 @@ export default function VscodeWorkbench({
 
             {isExplorerOpen && (
                 <ExplorerSidebar
-                    isContentsOpen={isContentsOpen}
-                    onSelectContentFile={setSelectedContentFile}
-                    onToggleContents={() => setIsContentsOpen((open) => !open)}
-                    openContentFolders={openContentFolders}
-                    selectedContentPath={selectedContentFile?.path}
-                    toggleContentFolder={toggleContentFolder}
+                    isArticlesOpen={isArticlesOpen}
+                    onSelectNavigationLink={() => setSelectedArticleFile(undefined)}
+                    onSelectArticleFile={setSelectedArticleFile}
+                    onToggleArticles={() => setIsArticlesOpen((open) => !open)}
+                    openArticleFolders={openArticleFolders}
+                    selectedArticlePath={selectedArticleFile?.path}
+                    toggleArticleFolder={toggleArticleFolder}
                 />
             )}
 
@@ -82,8 +83,8 @@ export default function VscodeWorkbench({
                 </header>
 
                 <section className={styles.editor} aria-label={`${activeTabTitle} editor area`}>
-                    {selectedContentFile ? (
-                        <MarkdownRenderer markdown={selectedContentFile.markdown} metadata={selectedContentFile.metadata} />
+                    {selectedArticleFile ? (
+                        <MarkdownRenderer markdown={selectedArticleFile.markdown} metadata={selectedArticleFile.metadata} />
                     ) : (
                         children
                     )}
