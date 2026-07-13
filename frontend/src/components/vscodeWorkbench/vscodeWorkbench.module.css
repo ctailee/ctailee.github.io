@@ -299,7 +299,12 @@
 
 .articleFile {
     gap: 8px;
+    height: auto;
+    min-height: 30px;
     padding-left: 22px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: flex-start;
 }
 
 .articlesToggle:hover,
@@ -361,13 +366,23 @@
     object-fit: contain;
 }
 
-.articleFile span,
 .articleFolder span:last-child,
 .articlesToggle span:last-child {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.articleFile span {
+    min-width: 0;
+    line-height: 20px;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+.articleFile .articleIcon {
+    margin-top: 1px;
 }
 
 .emptyArticles {
@@ -480,6 +495,39 @@
     background: var(--shell-bg);
 }
 
+.backToTop {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: #ffffff;
+    background: var(--blue);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+    cursor: pointer;
+}
+
+.backToTop:hover {
+    filter: brightness(1.12);
+}
+
+.backToTop:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+}
+
+.backToTop span {
+    font-size: 25px;
+    line-height: 1;
+    transform: translateY(-1px);
+}
+
 @media (max-width: 640px) {
     .vscode {
         --activity-width: 52px;
@@ -492,5 +540,10 @@
 
     .wideTab {
         width: 170px;
+    }
+
+    .backToTop {
+        right: 16px;
+        bottom: 16px;
     }
 }

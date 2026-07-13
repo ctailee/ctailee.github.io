@@ -16,13 +16,44 @@ const markdownParser = new MarkdownIt({
     typographer: true,
 });
 
+function createHeadingSlug(heading: string) {
+    return heading
+        .normalize("NFKC")
+        .toLowerCase()
+        .trim()
+        .replace(/[^\p{Letter}\p{Number}\p{Mark}\s_-]/gu, "")
+        .replace(/\s+/g, "-");
+}
+
+markdownParser.core.ruler.push("heading_anchors", (state) => {
+    const usedSlugs = new Map<string, number>();
+
+    state.tokens.forEach((token, index) => {
+        if (token.type !== "heading_open") {
+            return;
+        }
+
+        const heading = state.tokens[index + 1];
+        const baseSlug = createHeadingSlug(heading?.content ?? "") || "section";
+        const duplicateCount = usedSlugs.get(baseSlug) ?? 0;
+        const slug = duplicateCount === 0 ? baseSlug : `${baseSlug}-${duplicateCount}`;
+
+        usedSlugs.set(baseSlug, duplicateCount + 1);
+        token.attrSet("id", slug);
+    });
+});
+
 const defaultLinkOpenRenderer =
     markdownParser.renderer.rules.link_open ??
     ((tokens, index, options, _env, self) => self.renderToken(tokens, index, options));
 
 markdownParser.renderer.rules.link_open = (tokens, index, options, env, self) => {
-    tokens[index].attrSet("target", "_blank");
-    tokens[index].attrSet("rel", "noreferrer");
+    const href = tokens[index].attrGet("href") ?? "";
+
+    if (!href.startsWith("#")) {
+        tokens[index].attrSet("target", "_blank");
+        tokens[index].attrSet("rel", "noreferrer");
+    }
 
     return defaultLinkOpenRenderer(tokens, index, options, env, self);
 };
