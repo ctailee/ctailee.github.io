@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useRef, useState } from "react";
 import documentIcon from "../../assets/images/document.svg";
 import MarkdownRenderer from "../markdownRenderer";
 import ActivityBar from "./ActivityBar";
@@ -27,6 +27,7 @@ export default function VscodeWorkbench({
     const [openArticleFolders, setOpenArticleFolders] = useState<Set<string>>(() => new Set(["articles"]));
     const [selectedArticleFile, setSelectedArticleFile] = useState<ArticleFile>();
     const [themeMode, setThemeMode] = useThemeMode();
+    const editorRef = useRef<HTMLElement>(null);
 
     const toggleArticleFolder = (path: string) => {
         setOpenArticleFolders((currentFolders) => {
@@ -82,7 +83,7 @@ export default function VscodeWorkbench({
                     </div>
                 </header>
 
-                <section className={styles.editor} aria-label={`${activeTabTitle} editor area`}>
+                <section ref={editorRef} className={styles.editor} aria-label={`${activeTabTitle} editor area`}>
                     {selectedArticleFile ? (
                         <MarkdownRenderer markdown={selectedArticleFile.markdown} metadata={selectedArticleFile.metadata} />
                     ) : (
@@ -90,6 +91,16 @@ export default function VscodeWorkbench({
                     )}
                 </section>
             </section>
+
+            <button
+                className={styles.backToTop}
+                type="button"
+                aria-label="回到頁面頂端"
+                title="回到頂端"
+                onClick={() => editorRef.current?.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+                <span aria-hidden="true">↑</span>
+            </button>
         </main>
     );
 }
