@@ -2,7 +2,7 @@
 title: 安裝 JDK
 created_at: 2026-07-02
 updated_at: 2026-07-02
-tags: [Java, JDK, Environment]
+tags: [java, jdk, environment]
 ---
 前往 https://www.oracle.com/java/technologies/downloads/ 下載 `x64 Compressed Archive`。這個檔案就是一般的壓縮檔。
 

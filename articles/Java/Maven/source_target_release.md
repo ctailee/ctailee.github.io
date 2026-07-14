@@ -1,8 +1,8 @@
 ---
-title: Maven 中的 source、target 和 release
+title: pom.xml 中的 source、target 和 release
 created_at: 2026-07-04
 updated_at: 2026-07-04
-tags: [Java, Maven, pom.xml]
+tags: [java, maven, pom.xml]
 --- 
 
 在 Maven 的 `pom.xml` 中，常會看到這樣的設定：
