@@ -9,3 +9,17 @@
     text-align: center;
     opacity: 0.42;
 }
+
+@media (max-width: 860px) {
+    .welcomeMessage {
+        padding: 28px;
+        font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .welcomeMessage {
+        padding: 20px;
+        font-size: clamp(1.8rem, 10vw, 2.8rem);
+    }
+}

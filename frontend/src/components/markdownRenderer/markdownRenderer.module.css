@@ -143,7 +143,33 @@
 
 @media (max-width: 640px) {
     .markdown {
-        width: calc(100% - 34px);
-        margin-top: 34px;
+        width: calc(100% - 28px);
+        margin: 26px auto 52px;
+    }
+
+    .markdown h1 {
+        margin-bottom: 18px;
+        font-size: 28px;
+    }
+
+    .markdown h2 {
+        margin-top: 26px;
+        font-size: 23px;
+    }
+
+    .markdown h3 {
+        font-size: 19px;
+    }
+
+    .markdown p,
+    .markdown li,
+    .markdown blockquote {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .markdown pre {
+        padding: 13px;
+        font-size: 13px;
     }
 }

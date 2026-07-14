@@ -45,6 +45,17 @@ export default function VscodeWorkbench({
 
     const activeTabTitle = selectedArticleFile ? `${selectedArticleFile.displayName}.md` : tabTitle;
 
+    const closeExplorerOnMobile = () => {
+        if (window.matchMedia("(max-width: 640px)").matches) {
+            setIsExplorerOpen(false);
+        }
+    };
+
+    const selectArticleFile = (file: ArticleFile) => {
+        setSelectedArticleFile(file);
+        closeExplorerOnMobile();
+    };
+
     return (
         <main className={`${styles.vscode} ${isExplorerOpen ? styles.explorerOpen : ""}`} data-theme={themeMode}>
             <ActivityBar
@@ -65,12 +76,24 @@ export default function VscodeWorkbench({
             {isExplorerOpen && (
                 <ExplorerSidebar
                     isArticlesOpen={isArticlesOpen}
-                    onSelectNavigationLink={() => setSelectedArticleFile(undefined)}
-                    onSelectArticleFile={setSelectedArticleFile}
+                    onSelectNavigationLink={() => {
+                        setSelectedArticleFile(undefined);
+                        closeExplorerOnMobile();
+                    }}
+                    onSelectArticleFile={selectArticleFile}
                     onToggleArticles={() => setIsArticlesOpen((open) => !open)}
                     openArticleFolders={openArticleFolders}
                     selectedArticlePath={selectedArticleFile?.path}
                     toggleArticleFolder={toggleArticleFolder}
+                />
+            )}
+
+            {isExplorerOpen && (
+                <button
+                    className={styles.explorerBackdrop}
+                    type="button"
+                    aria-label="關閉檔案總管"
+                    onClick={() => setIsExplorerOpen(false)}
                 />
             )}
 

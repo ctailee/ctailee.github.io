@@ -139,15 +139,62 @@
 }
 
 @media (max-width: 860px) {
+    .contentPanel {
+        width: min(100% - 44px, 720px);
+        margin-top: 42px;
+    }
+
     .skillGrid,
     .experienceCard {
         grid-template-columns: 1fr;
+    }
+
+    .experienceCard {
+        gap: 16px;
     }
 }
 
 @media (max-width: 640px) {
     .contentPanel {
-        width: calc(100% - 34px);
-        margin-top: 34px;
+        width: calc(100% - 28px);
+        margin: 26px auto 52px;
+    }
+
+    .profileActions {
+        margin-bottom: 20px;
+    }
+
+    .githubButton {
+        min-height: 42px;
+    }
+
+    .section + .section {
+        margin-top: 38px;
+    }
+
+    .sectionHeader {
+        margin-bottom: 14px;
+    }
+
+    .sectionHeader h1 {
+        font-size: 24px;
+    }
+
+    .skillGrid,
+    .timeline {
+        gap: 10px;
+    }
+
+    .skillGroup,
+    .experienceCard {
+        padding: 16px;
+    }
+
+    .experienceMeta h2 {
+        font-size: 17px;
+    }
+
+    .experienceCard li {
+        line-height: 1.55;
     }
 }

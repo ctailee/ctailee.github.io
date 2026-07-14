@@ -530,14 +530,109 @@
     transform: translateY(-1px);
 }
 
+.explorerBackdrop {
+    display: none;
+}
+
+/* Tablet: preserve the desktop workbench layout while giving the editor more room. */
+@media (min-width: 641px) and (max-width: 1100px) {
+    .vscode {
+        --activity-width: 54px;
+        --explorer-width: clamp(220px, 28vw, 270px);
+    }
+
+    .activityBar {
+        padding-top: 10px;
+    }
+
+    .primaryActivities {
+        gap: 12px;
+    }
+
+    .settingsWindow {
+        grid-template-columns: 190px minmax(0, 1fr);
+        width: calc(100vw - 48px);
+        height: calc(100dvh - 56px);
+    }
+
+    .settingsContent {
+        padding: 28px 30px;
+    }
+
+    .backToTop {
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
 @media (max-width: 640px) {
     .vscode {
         --activity-width: 52px;
-        --explorer-width: minmax(238px, 72vw);
+        --explorer-width: min(78vw, 300px);
+        grid-template-columns: var(--activity-width) minmax(0, 1fr);
+    }
+
+    .vscode.explorerOpen {
+        grid-template-columns: var(--activity-width) minmax(0, 1fr);
+    }
+
+    .activityBar {
+        position: relative;
+        z-index: 24;
+        padding-top: max(8px, env(safe-area-inset-top));
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+
+    .primaryActivities {
+        gap: 8px;
+    }
+
+    .activityButton {
+        min-height: 46px;
+    }
+
+    .activityIcon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .explorer {
+        position: fixed;
+        z-index: 23;
+        top: 0;
+        bottom: 0;
+        left: var(--activity-width);
+        width: var(--explorer-width);
+        overflow-y: auto;
+        box-shadow: 10px 0 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .explorerBackdrop {
+        position: fixed;
+        z-index: 22;
+        inset: 0 0 0 var(--activity-width);
+        display: block;
+        padding: 0;
+        background: rgba(0, 0, 0, 0.34);
+        border: 0;
+    }
+
+    .fileLinks a,
+    .articlesToggle,
+    .articleFolder,
+    .articleFile {
+        min-height: 44px;
+    }
+
+    .shell {
+        grid-template-rows: 42px minmax(0, 1fr);
     }
 
     .tab {
         min-width: 135px;
+        height: 42px;
+        padding-inline: 10px;
+        font-size: 14px;
     }
 
     .wideTab {
@@ -545,7 +640,48 @@
     }
 
     .backToTop {
-        right: 16px;
-        bottom: 16px;
+        right: max(14px, env(safe-area-inset-right));
+        bottom: max(14px, env(safe-area-inset-bottom));
+        width: 42px;
+        height: 42px;
+    }
+
+    .settingsOverlay {
+        padding: 12px;
+    }
+
+    .settingsWindow {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto minmax(0, 1fr);
+        width: 100%;
+        height: min(520px, calc(100dvh - 24px));
+    }
+
+    .settingsSidebar {
+        padding: 12px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .settingsSidebar button {
+        min-height: 42px;
+    }
+
+    .settingsContent {
+        padding: 22px 18px;
+        overflow-y: auto;
+    }
+
+    .settingsContent h2 {
+        margin-bottom: 18px;
+        font-size: 22px;
+    }
+
+    .optionButtons {
+        flex-wrap: wrap;
+    }
+
+    .optionButtons button {
+        min-height: 42px;
     }
 }
