@@ -1,4 +1,6 @@
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link, useLocation } from "react-router";
+import documentIcon from "../../assets/images/document.svg";
 import ArticleTreeItem from "./ArticleTreeItem";
 import { articleTree } from "./articleTree";
 import type { ArticleFile } from "./types";
@@ -28,6 +30,9 @@ export default function ExplorerSidebar({
     selectedArticlePath,
     toggleArticleFolder,
 }: ExplorerSidebarProps) {
+    const location = useLocation();
+    const [isProjectsOpen, setIsProjectsOpen] = useState(() => location.pathname.startsWith("/projects/"));
+
     return (
         <aside className={styles.explorer} aria-label="Explorer">
             <div className={styles.explorerTitle}>Explorer</div>
@@ -61,6 +66,29 @@ export default function ExplorerSidebar({
                         ) : (
                             <p className={styles.emptyArticles}>No articles</p>
                         )}
+                    </div>
+                )}
+            </div>
+            <div className={styles.projectsExplorer}>
+                <button
+                    className={styles.articlesToggle}
+                    type="button"
+                    aria-expanded={isProjectsOpen}
+                    onClick={() => setIsProjectsOpen((open) => !open)}
+                >
+                    <span className={`${styles.articleArrow} ${isProjectsOpen ? styles.openArticleArrow : ""}`} aria-hidden="true" />
+                    <span>Projects</span>
+                </button>
+                {isProjectsOpen && (
+                    <div className={styles.projectsTree}>
+                        <Link
+                            className={`${styles.projectFile} ${location.pathname === "/projects/text-cipher" ? styles.activeArticleFile : ""}`}
+                            to="/projects/text-cipher"
+                            onClick={onSelectNavigationLink}
+                        >
+                            <img className={styles.articleIcon} src={documentIcon} alt="" aria-hidden="true" />
+                            <span>text-cipher</span>
+                        </Link>
                     </div>
                 )}
             </div>
