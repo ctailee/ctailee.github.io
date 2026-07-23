@@ -1,7 +1,7 @@
 ---
 title: 安裝 JDK
 created_at: 2026-07-02
-updated_at: 2026-07-02
+updated_at: 2026-07-23
 tags: [java, jdk, environment]
 ---
 前往 https://www.oracle.com/java/technologies/downloads/ 下載 `x64 Compressed Archive`。這個檔案就是一般的壓縮檔。
@@ -18,3 +18,5 @@ export PATH="$JAVA_HOME/bin:$PATH"
 ```
 
 這樣就大功告成了! 未來要切換 JDK 版本只需要下載新的壓縮檔並解壓縮到 `.jdks` 然後換一下 `$JAVA_HOME` 就行 !
+
+>上面的範例使用 Oracle 提供的 OpenJDK 版本作為示範。如有需要，也可以改用 Adoptium 發行的 [Eclipse Temurin](https://adoptium.net/temurin/releases)。
