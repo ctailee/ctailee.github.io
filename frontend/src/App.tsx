@@ -2,6 +2,7 @@ import {Route, Routes} from 'react-router';
 import HomePage from './pages/HomePage';
 import AboutMePage from './pages/AboutMePage';
 import TextCipherPage from './pages/TextCipherPage';
+import UrlShortenerPage from './pages/UrlShortenerPage';
 
 export default function App() {
     return (
@@ -9,6 +10,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutMePage />} />
             <Route path="/projects/text-cipher" element={<TextCipherPage />} />
+            <Route path="/projects/url-shortener" element={<UrlShortenerPage />} />
         </Routes>
     )
 }
