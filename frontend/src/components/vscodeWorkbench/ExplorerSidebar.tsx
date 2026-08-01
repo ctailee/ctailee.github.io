@@ -89,6 +89,14 @@ export default function ExplorerSidebar({
                             <img className={styles.articleIcon} src={documentIcon} alt="" aria-hidden="true" />
                             <span>text-cipher</span>
                         </Link>
+                        <Link
+                            className={`${styles.projectFile} ${location.pathname === "/projects/url-shortener" ? styles.activeArticleFile : ""}`}
+                            to="/projects/url-shortener"
+                            onClick={onSelectNavigationLink}
+                        >
+                            <img className={styles.articleIcon} src={documentIcon} alt="" aria-hidden="true" />
+                            <span>url-shortener</span>
+                        </Link>
                     </div>
                 )}
             </div>
