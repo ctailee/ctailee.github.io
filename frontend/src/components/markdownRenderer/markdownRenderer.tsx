@@ -1,5 +1,6 @@
 import "highlight.js/styles/github.min.css";
 import MarkdownIt from "markdown-it";
+import type { MouseEvent } from "react";
 import type { ArticleMetadata } from "../vscodeWorkbench/types";
 import { highlightMarkdownCode } from "./codeHighlighter";
 import styles from "./markdownRenderer.module.css";
@@ -62,6 +63,24 @@ export default function MarkdownRenderer({ markdown, metadata }: MarkdownRendere
     const hasMetadata = metadata?.updated_at || (metadata?.tags && metadata.tags.length > 0);
     const html = markdownParser.render(markdown);
 
+    const handleAnchorClick = (event: MouseEvent<HTMLDivElement>) => {
+        const link = (event.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
+
+        if (!link) {
+            return;
+        }
+
+        const targetId = decodeURIComponent(link.hash.slice(1));
+        const target = Array.from(event.currentTarget.querySelectorAll<HTMLElement>("[id]")).find(
+            (element) => element.id === targetId,
+        );
+
+        if (target) {
+            event.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
     return (
         <article className={styles.markdown}>
             {hasMetadata && (
@@ -76,7 +95,7 @@ export default function MarkdownRenderer({ markdown, metadata }: MarkdownRendere
                     )}
                 </header>
             )}
-            <div dangerouslySetInnerHTML={{ __html: html }} />
+            <div onClick={handleAnchorClick} dangerouslySetInnerHTML={{ __html: html }} />
         </article>
     );
 }
