@@ -1,4 +1,5 @@
 import { type FormEvent, useState } from "react";
+import { API_BASE_URL } from "../api";
 import VscodeWorkbench from "../components/vscodeWorkbench";
 import styles from "./urlShortenerPage.module.css";
 
@@ -11,7 +12,7 @@ type ApiErrorResponse = {
     errors: Record<string, string>;
 };
 
-const URL_SHORTENER_API_URL = "https://api.ctailee.com/project/shorturl/shortenurl";
+const URL_SHORTENER_API_URL = `${API_BASE_URL}/project/shorturl/shortenurl`;
 const SHORT_URL_BASE = "https://s.ctailee.com";
 
 export default function UrlShortenerPage() {

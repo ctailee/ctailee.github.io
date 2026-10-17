@@ -1,5 +1,23 @@
 # React + TypeScript + Vite
 
+## API 網址設定
+
+預設維持呼叫 `https://api.ctailee.com`，API 路徑保持不變。
+
+需要連到本機後端進行測試時，可直接執行：
+
+```bash
+VITE_API_BASE_URL=http://localhost:8080 npm run dev
+```
+
+或在專案 frontend 目錄下建立 `.env`：
+
+```dotenv
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+修改後需重新啟動開發伺服器。移除或清空此變數即恢復預設網址。
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
