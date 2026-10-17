@@ -1,4 +1,5 @@
 import { type FormEvent, useState } from "react";
+import { API_BASE_URL } from "../api";
 import VscodeWorkbench from "../components/vscodeWorkbench";
 import styles from "./textCipherPage.module.css";
 
@@ -10,7 +11,7 @@ type ApiError = {
     errors?: FieldErrors;
 };
 
-const TEXT_CIPHER_API_BASE_URL = "https://api.ctailee.com/project/textcipher";
+const TEXT_CIPHER_API_BASE_URL = `${API_BASE_URL}/project/textcipher`;
 
 export default function TextCipherPage() {
     const [mode, setMode] = useState<CipherMode>("encrypt");
